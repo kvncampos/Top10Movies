@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Movies{% endblock %}
+
+{% block content %}
+<div class="content">
+  <h1 class="heading" style="margin-top: 20px;">Movie Title</h1>
+    <p class="description">Edit Movie Rating</p>
+  </div>
+<div class='container'>
+  <form method="POST" action="{{ url_for('edit_movie', id=id) }}">
+    <div style='margin: 10px 0px;'>
+      {{ form.review.label }}: <br>{{ form.review() }}
+    </div>
+    <div style='margin: 10px 0px;'>{{ form.rating.label }}: <br>{{ form.rating(type="number", min=0.0, max=10.0, step="0.1") }}
+    </div>
+    {{ form.submit(class="btn btn-primary") }}
+  </form>
+</div>
+
+{% endblock %}

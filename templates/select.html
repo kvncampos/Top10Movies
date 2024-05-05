@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Select Movie{% endblock %}
+
+{% block content %}
+<div class="container" style="margin-top: 20px;">
+    <h1 class="heading">Select Movie</h1>
+
+  <div class='container'>
+    <ul>
+      {% for movie_dict in movie_list %}
+      <li style="margin: 20px;">
+        <form action="{{ url_for('select_movie') }}" method="POST">
+          <input type="hidden" name="id" value="{{ movie_dict['id'] }}">
+          <button class="btn btn-outline-dark" type="submit">{{ movie_dict['original_title'] }} - {{ movie_dict['release_date'] }}</button>
+        </form>
+        <p> {{ movie_dict['overview']}}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  
+</div>
+
+  
+{% endblock %}
